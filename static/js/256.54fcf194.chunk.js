@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfollowers_new_app=self.webpackChunkfollowers_new_app||[]).push([[256],{9256:function(e,n,u){u.r(n);var l=u(3329);n.default=function(){return(0,l.jsx)("div",{children:"NotFound"})}}}]);
+//# sourceMappingURL=256.54fcf194.chunk.js.map
