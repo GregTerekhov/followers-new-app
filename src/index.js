@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter basename="/test-followers-app">
+      <BrowserRouter basename="/followers-new-app">
         <App />
       </BrowserRouter>
     </PersistGate>
