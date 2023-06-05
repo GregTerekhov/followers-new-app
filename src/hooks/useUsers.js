@@ -6,7 +6,7 @@ import {
   selectUsers,
 } from 'store/users/usersSelectors';
 import { fetchTweets } from 'store/users/usersOperations';
-// import { incrementPage } from 'store/users/usersSlice';
+import { incrementPage } from 'store/users/usersSlice';
 import {
   selectFollowersIds,
   selectIsFollowing,
@@ -26,7 +26,7 @@ export const useUsers = () => {
   }, [dispatch, page]);
 
   const loadMore = useCallback(() => {
-    dispatch(fetchTweets());
+    dispatch(incrementPage());
   }, [dispatch]);
 
   const handleFilterChange = useCallback(
