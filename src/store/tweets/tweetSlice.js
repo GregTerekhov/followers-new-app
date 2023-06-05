@@ -1,18 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const tweetSlice = createSlice({
-  name: 'tweet',
+export const tweetSlice = createSlice({
+  name: 'tweets',
   initialState: {
-    followers: 0,
+    followersIds: [],
     isFollowing: false,
   },
   reducers: {
-    follow: state => {
-      state.followers += state.isFollowing ? -1 : 1;
-      state.isFollowing = !state.isFollowing;
+    follow: (state, action) => {
+      state.followersIds.push(action.payload);
+      state.isFollowing = true;
+    },
+    unfollow: (state, action) => {
+      state.followersIds = state.followersIds.filter(
+        id => id !== action.payload
+      );
+      state.isFollowing = false;
     },
   },
 });
 
-export const { follow } = tweetSlice.actions;
-export default tweetSlice.reducer;
+export const { follow, unfollow } = tweetSlice.actions;

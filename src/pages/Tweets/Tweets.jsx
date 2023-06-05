@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useUsers } from 'hooks/useUsers';
-import { selectFilteredUsers } from 'store/users/usersSelectors';
 import TweetItem from 'components/TweetItem/TweetItem.jsx';
 import {
   GoBackBtn,
@@ -13,15 +11,14 @@ import {
 } from './Tweets.styled';
 
 const Tweets = () => {
-  const { loadMore, fetchUsers } = useUsers();
+  const { loadMore, fetchUsers, users, page } = useUsers();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
-  const filteredUsers = useSelector(selectFilteredUsers);
-  const showNoTweetsMessage = filteredUsers.length === 0;
+  const showNoTweetsMessage = users.length === 0;
 
   useEffect(() => {
     fetchUsers();
-  }, [fetchUsers]);
+  }, [fetchUsers, page]);
 
   return (
     <TweetsWrapper>
@@ -33,10 +30,11 @@ const Tweets = () => {
         </NoTweetsMessage>
       ) : (
         <TweetsList>
-          {filteredUsers &&
-            filteredUsers.map(({ id, user, tweets, followers, avatar }) => (
+          {users &&
+            users.map(({ id, user, tweets, followers, avatar }, index) => (
               <TweetItem
-                key={id}
+                key={index}
+                id={id}
                 user={user}
                 tweets={tweets}
                 followers={followers}

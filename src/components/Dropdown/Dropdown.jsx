@@ -1,8 +1,7 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import Select from 'react-select';
-import { setFilter } from 'store/users/usersSlice';
 import { dropdownStyles } from './Dropdown.styled';
+import { useUsers } from 'hooks/useUsers';
 
 const options = [
   { value: 'showAll', label: 'Show All' },
@@ -11,11 +10,7 @@ const options = [
 ];
 
 const Dropdown = () => {
-  const dispatch = useDispatch();
-
-  const handleFilterChange = selectedOption => {
-    dispatch(setFilter(selectedOption.value));
-  };
+  const { handleFilterChange } = useUsers();
 
   return (
     <>

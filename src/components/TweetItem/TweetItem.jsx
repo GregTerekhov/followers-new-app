@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import logo from 'logo.svg';
 import pictureQuestion from 'picture-question.png';
 import {
@@ -11,25 +12,30 @@ import {
   TweetWrap,
 } from './TweetItem.styled';
 import formatNumber from 'services/formatNumber';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateFollowers } from 'store/users/usersOperations';
+import { useUsers } from 'hooks/useUsers';
+import { follow, unfollow } from 'store/tweets/tweetSlice';
 
-const TweetItem = ({ user, tweets, followers, avatar }) => {
-  const [following, setFollowing] = useState(false);
+const TweetItem = ({ id, user, tweets, followers, avatar }) => {
+  const { followerIds } = useUsers();
   const dispatch = useDispatch();
 
   const handleFollowClick = () => {
-    const updatedFollowers = following ? followers + 1 : followers - 1;
-    dispatch(
-      updateFollowers({
-        id: user.id,
-        followers: updatedFollowers,
-      })
-    );
+    const toggleFollowing = following ? followers - 1 : followers + 1;
+    const updatedFollower = { id, followers: toggleFollowing };
 
-    setFollowing(!following);
+    dispatch(updateFollowers(updatedFollower));
+
+    if (!following) {
+      dispatch(follow(id));
+    } else {
+      dispatch(unfollow(id));
+    }
   };
+
+  const followedUser = id => followerIds.indexOf(id) !== -1;
+  const following = followedUser(id);
 
   return (
     <TweetWrap>
@@ -60,3 +66,11 @@ const TweetItem = ({ user, tweets, followers, avatar }) => {
 };
 
 export default TweetItem;
+
+TweetItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
+  tweets: PropTypes.number.isRequired,
+  followers: PropTypes.number.isRequired,
+  avatar: PropTypes.string.isRequired,
+};

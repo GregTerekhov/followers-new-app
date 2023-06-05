@@ -5,8 +5,6 @@ const initialState = {
   items: [],
   page: 1,
   filter: 'showAll',
-  allTweetsLoaded: false,
-  isFollowing: false,
   error: null,
   loading: false,
 };
@@ -17,31 +15,18 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    // toggleFollow: (state, action) => {
-    //   const { userId } = action.payload;
-    //   const user = state.items.find(item => item.id === userId);
-    //   if (user) {
-    //     if (user.followers === 0) {
-    //       user.followers += 1;
-    //     } else {
-    //       user.followers -= 1;
-    //     }
-    //   }
-    // },
-    // setPage: (state, action) => {
-    //   state.page = action.payload;
-    // },
     incrementPage: state => {
       state.page += 1;
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
+      state.page = 1;
     },
   },
   extraReducers: builder => {
     builder
       .addCase(fetchTweets.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items = [...state.items, ...action.payload];
       })
       .addCase(updateFollowers.fulfilled, (state, action) => {
         const index = state.items.findIndex(
@@ -69,8 +54,5 @@ const handleFulfilled = state => {
   state.loading = false;
 };
 
-export const { setPage, incrementPage, toggleFollow, setFilter } =
-  usersSlice.actions;
+export const { incrementPage, setFilter } = usersSlice.actions;
 const extraActions = [fetchTweets, updateFollowers];
-
-export default usersSlice.reducer;

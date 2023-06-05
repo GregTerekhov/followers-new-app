@@ -1,2 +1,2 @@
-export const selectFollowers = state => state.tweet.followers;
-export const selectIsFollowing = state => state.tweet.isFollowing;
+export const selectFollowersIds = state => state.tweets.followersIds;
+export const selectIsFollowing = state => state.tweets.isFollowing;

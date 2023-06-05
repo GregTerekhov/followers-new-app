@@ -1,40 +1,49 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectFilteredUsers,
+  selectFilter,
   selectPage,
   selectUsers,
 } from 'store/users/usersSelectors';
-import { fetchTweets, updateFollowers } from 'store/users/usersOperations';
-import { incrementPage } from 'store/users/usersSlice';
+import { fetchTweets } from 'store/users/usersOperations';
+// import { incrementPage } from 'store/users/usersSlice';
+import {
+  selectFollowersIds,
+  selectIsFollowing,
+} from 'store/tweets/tweetSelectors';
+import { setFilter } from 'store/users/usersSlice';
 
 export const useUsers = () => {
   const users = useSelector(selectUsers);
   const page = useSelector(selectPage);
-  const filteredUsers = useSelector(selectFilteredUsers);
+  const filter = useSelector(selectFilter);
+  const isFollowing = useSelector(selectIsFollowing);
+  const followerIds = useSelector(selectFollowersIds);
   const dispatch = useDispatch();
 
-  const fetchUsers = useCallback(
-    () => dispatch(fetchTweets(page)),
-    [dispatch, page]
-  );
+  const fetchUsers = useCallback(() => {
+    dispatch(fetchTweets(page));
+  }, [dispatch, page]);
 
   const loadMore = useCallback(() => {
-    dispatch(incrementPage());
+    dispatch(fetchTweets());
   }, [dispatch]);
 
-  const followUser = useCallback(
-    id => {
-      dispatch(updateFollowers(id));
+  const handleFilterChange = useCallback(
+    selectedOption => {
+      dispatch(setFilter(selectedOption));
     },
     [dispatch]
   );
 
   return {
     users,
-    filteredUsers,
+    page,
+    filter,
+    isFollowing,
+    followerIds,
     fetchUsers,
     loadMore,
-    followUser,
+    handleFilterChange,
   };
 };

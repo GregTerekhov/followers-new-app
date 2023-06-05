@@ -10,7 +10,7 @@ export const fetchTweets = createAsyncThunk(
       const { data } = await axios.get('/users', {
         params: {
           page: page,
-          limit: 12,
+          limit: 6,
         },
       });
       return data;
@@ -25,7 +25,6 @@ export const updateFollowers = createAsyncThunk(
   async ({ id, ...body }, { rejectWithValue }) => {
     try {
       const { data } = await axios.put(`/users/${id}`, body);
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
