@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/followers-new-app/static/css/main.1876b9f0.css",
-    "main.js": "/followers-new-app/static/js/main.1be3d705.js",
-    "static/js/380.deead675.chunk.js": "/followers-new-app/static/js/380.deead675.chunk.js",
+    "main.js": "/followers-new-app/static/js/main.7870ffcb.js",
+    "static/js/380.2c778ec1.chunk.js": "/followers-new-app/static/js/380.2c778ec1.chunk.js",
     "static/js/631.0bcf77f4.chunk.js": "/followers-new-app/static/js/631.0bcf77f4.chunk.js",
-    "static/js/133.a9ae7a08.chunk.js": "/followers-new-app/static/js/133.a9ae7a08.chunk.js",
+    "static/js/133.852e1e73.chunk.js": "/followers-new-app/static/js/133.852e1e73.chunk.js",
     "static/js/787.36348259.chunk.js": "/followers-new-app/static/js/787.36348259.chunk.js",
     "static/js/750.8a5b3d23.chunk.js": "/followers-new-app/static/js/750.8a5b3d23.chunk.js",
     "static/js/965.712101ec.chunk.js": "/followers-new-app/static/js/965.712101ec.chunk.js",
@@ -13,16 +13,16 @@
     "static/media/logo.svg": "/followers-new-app/static/media/logo.89604f2827917106f320d36dad457a91.svg",
     "index.html": "/followers-new-app/index.html",
     "main.1876b9f0.css.map": "/followers-new-app/static/css/main.1876b9f0.css.map",
-    "main.1be3d705.js.map": "/followers-new-app/static/js/main.1be3d705.js.map",
-    "380.deead675.chunk.js.map": "/followers-new-app/static/js/380.deead675.chunk.js.map",
+    "main.7870ffcb.js.map": "/followers-new-app/static/js/main.7870ffcb.js.map",
+    "380.2c778ec1.chunk.js.map": "/followers-new-app/static/js/380.2c778ec1.chunk.js.map",
     "631.0bcf77f4.chunk.js.map": "/followers-new-app/static/js/631.0bcf77f4.chunk.js.map",
-    "133.a9ae7a08.chunk.js.map": "/followers-new-app/static/js/133.a9ae7a08.chunk.js.map",
+    "133.852e1e73.chunk.js.map": "/followers-new-app/static/js/133.852e1e73.chunk.js.map",
     "787.36348259.chunk.js.map": "/followers-new-app/static/js/787.36348259.chunk.js.map",
     "750.8a5b3d23.chunk.js.map": "/followers-new-app/static/js/750.8a5b3d23.chunk.js.map",
     "965.712101ec.chunk.js.map": "/followers-new-app/static/js/965.712101ec.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1876b9f0.css",
-    "static/js/main.1be3d705.js"
+    "static/js/main.7870ffcb.js"
   ]
 }
