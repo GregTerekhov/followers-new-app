@@ -11,6 +11,7 @@ import {
 } from './Layout.styled';
 import { NavigationLink } from 'styles/Button.styled';
 import { FooterEl, Header } from 'styles/HeadnFoot.styled';
+import Loader from 'components/Loader/Loader';
 
 const Layout = () => {
   const location = useLocation();
@@ -40,7 +41,21 @@ const Layout = () => {
       <main>
         <Section>
           <Container>
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense
+              fallback={
+                <Loader
+                  height="100"
+                  width="100"
+                  color="#5cd3a8'"
+                  wrapperStyle={{}}
+                  visible={true}
+                  outerCircleColor="#5cd3a8'"
+                  innerCircleColor="#5cd3a8'"
+                  barColor="#ebd8ff"
+                  ariaLabel="circles-with-bar-loading"
+                />
+              }
+            >
               <Outlet />
             </Suspense>
           </Container>
