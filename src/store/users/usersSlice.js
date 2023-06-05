@@ -16,7 +16,11 @@ export const usersSlice = createSlice({
   initialState,
   reducers: {
     incrementPage: state => {
-      state.page += 1;
+      // state.page += 1;
+      return initialState;
+    },
+    clearUsers: () => {
+      return initialState;
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
@@ -39,7 +43,6 @@ export const usersSlice = createSlice({
       .addMatcher(isAnyOf(...getActions('rejected')), handleRejected);
   },
 });
-
 const handlePending = state => {
   state.loading = true;
   state.error = null;
@@ -54,5 +57,5 @@ const handleFulfilled = state => {
   state.loading = false;
 };
 
-export const { incrementPage, setFilter } = usersSlice.actions;
+export const { incrementPage, setFilter, clearUsers } = usersSlice.actions;
 const extraActions = [fetchTweets, updateFollowers];

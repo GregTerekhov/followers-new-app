@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { usersSlice } from './users/usersSlice';
 import storage from 'redux-persist/lib/storage';
 import {
@@ -31,11 +31,13 @@ const persistedTweetReducer = persistReducer(
   tweetSlice.reducer
 );
 
+const rootReducer = combineReducers({
+  users: usersSlice.reducer,
+  tweets: persistedTweetReducer,
+});
+
 export const store = configureStore({
-  reducer: {
-    users: usersSlice.reducer,
-    tweets: persistedTweetReducer,
-  },
+  reducer: rootReducer,
   middleware,
 });
 

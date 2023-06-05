@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useUsers } from 'hooks/useUsers';
 import TweetItem from 'components/TweetItem/TweetItem.jsx';
@@ -11,14 +11,35 @@ import {
 } from './Tweets.styled';
 
 const Tweets = () => {
-  const { loadMore, fetchUsers, users, page } = useUsers();
+  const { fetchUsers, users, clear, followerIds, filter } = useUsers();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
   const showNoTweetsMessage = users.length === 0;
 
+  const [page, setPage] = useState(1);
+
+  const filterUsers = () => {
+    switch (filter.value) {
+      case 'followings':
+        return users.filter(user => followerIds.includes(user.id));
+      case 'follow':
+        return users.filter(user => !followerIds.includes(user.id));
+      default:
+        return users;
+    }
+  };
+
   useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers, page]);
+    return () => {
+      clear();
+    };
+  }, [clear]);
+
+  useEffect(() => {
+    fetchUsers(page);
+  }, [fetchUsers, clear, page]);
+
+  const filteredUsers = filterUsers();
 
   return (
     <TweetsWrapper>
@@ -30,21 +51,23 @@ const Tweets = () => {
         </NoTweetsMessage>
       ) : (
         <TweetsList>
-          {users &&
-            users.map(({ id, user, tweets, followers, avatar }, index) => (
-              <TweetItem
-                key={index}
-                id={id}
-                user={user}
-                tweets={tweets}
-                followers={followers}
-                avatar={avatar}
-              />
-            ))}
+          {filteredUsers &&
+            filteredUsers.map(
+              ({ id, user, tweets, followers, avatar }, index) => (
+                <TweetItem
+                  key={index}
+                  id={id}
+                  user={user}
+                  tweets={tweets}
+                  followers={followers}
+                  avatar={avatar}
+                />
+              )
+            )}
         </TweetsList>
       )}
       {!showNoTweetsMessage && (
-        <LoadMoreBtn type="button" onClick={loadMore}>
+        <LoadMoreBtn type="button" onClick={() => setPage(page => page + 1)}>
           Load more
         </LoadMoreBtn>
       )}
