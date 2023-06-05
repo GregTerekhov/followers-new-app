@@ -4,6 +4,7 @@ import { useUsers } from 'hooks/useUsers';
 import TweetItem from 'components/TweetItem/TweetItem.jsx';
 import { NoTweetsMessage, TweetsList, TweetsWrapper } from './Tweets.styled';
 import { GoBackBtn, LoadMoreBtn } from 'styles/Button.styled';
+import { Helmet } from 'react-helmet-async';
 
 const Tweets = () => {
   const { fetchUsers, users, clear, followerIds, filter } = useUsers();
@@ -37,36 +38,41 @@ const Tweets = () => {
   const filteredUsers = filterUsers();
 
   return (
-    <TweetsWrapper>
-      <GoBackBtn to={backLinkLocationRef.current}>Go back</GoBackBtn>
-      {showNoTweetsMessage ? (
-        <NoTweetsMessage>
-          Sorry, no tweets for your request.
-          <br /> Try again
-        </NoTweetsMessage>
-      ) : (
-        <TweetsList>
-          {filteredUsers &&
-            filteredUsers.map(
-              ({ id, user, tweets, followers, avatar }, index) => (
-                <TweetItem
-                  key={index}
-                  id={id}
-                  user={user}
-                  tweets={tweets}
-                  followers={followers}
-                  avatar={avatar}
-                />
-              )
-            )}
-        </TweetsList>
-      )}
-      {!showNoTweetsMessage && (
-        <LoadMoreBtn type="button" onClick={() => setPage(page => page + 1)}>
-          Load more
-        </LoadMoreBtn>
-      )}
-    </TweetsWrapper>
+    <>
+      <Helmet>
+        <title>Your tweetbook</title>
+      </Helmet>
+      <TweetsWrapper>
+        <GoBackBtn to={backLinkLocationRef.current}>Go back</GoBackBtn>
+        {showNoTweetsMessage ? (
+          <NoTweetsMessage>
+            Sorry, no tweets for your request.
+            <br /> Try again
+          </NoTweetsMessage>
+        ) : (
+          <TweetsList>
+            {filteredUsers &&
+              filteredUsers.map(
+                ({ id, user, tweets, followers, avatar }, index) => (
+                  <TweetItem
+                    key={index}
+                    id={id}
+                    user={user}
+                    tweets={tweets}
+                    followers={followers}
+                    avatar={avatar}
+                  />
+                )
+              )}
+          </TweetsList>
+        )}
+        {!showNoTweetsMessage && (
+          <LoadMoreBtn type="button" onClick={() => setPage(page => page + 1)}>
+            Load more
+          </LoadMoreBtn>
+        )}
+      </TweetsWrapper>
+    </>
   );
 };
 
