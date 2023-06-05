@@ -1,5 +1,6 @@
 import homePicture from 'keyboard.jpg';
-import { HomeJoinBtn, HomePagePic, Title } from './Home.styled';
+import { HomePagePic, Title } from './Home.styled';
+import { HomeJoinBtn } from 'styles/Button.styled';
 
 const Home = () => {
   return (

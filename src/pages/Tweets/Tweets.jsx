@@ -2,13 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useUsers } from 'hooks/useUsers';
 import TweetItem from 'components/TweetItem/TweetItem.jsx';
-import {
-  GoBackBtn,
-  LoadMoreBtn,
-  NoTweetsMessage,
-  TweetsList,
-  TweetsWrapper,
-} from './Tweets.styled';
+import { NoTweetsMessage, TweetsList, TweetsWrapper } from './Tweets.styled';
+import { GoBackBtn, LoadMoreBtn } from 'styles/Button.styled';
 
 const Tweets = () => {
   const { fetchUsers, users, clear, followerIds, filter } = useUsers();

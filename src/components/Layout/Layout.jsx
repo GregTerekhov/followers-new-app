@@ -4,14 +4,13 @@ import Dropdown from 'components/Dropdown/Dropdown';
 import Footer from 'components/Footer/Footer';
 import {
   Container,
-  FooterEl,
-  Header,
   NavItem,
   NavList,
   Navigation,
-  NavigationLink,
   Section,
 } from './Layout.styled';
+import { NavigationLink } from 'styles/Button.styled';
+import { FooterEl, Header } from 'styles/HeadnFoot.styled';
 
 const Layout = () => {
   const location = useLocation();

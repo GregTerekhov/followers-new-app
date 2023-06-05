@@ -87,30 +87,3 @@ export const TweetInfo = styled.p`
     font-size: 24px;
   }
 `;
-
-export const FollowingBtn = styled.button`
-  font-family: 'Montserrat';
-  font-weight: 600;
-  font-size: 18px;
-  width: 196px;
-  padding: 14px 0;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  color: #373737;
-  background-color: #ebd8ff;
-  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
-  border-radius: 10.3108px;
-  transition: background-color 400ms ease-in-out;
-
-  &:focus,
-  &:hover,
-  &:active {
-    background-color: #5cd3a8;
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: 24px;
-    width: 220px;
-  }
-`;

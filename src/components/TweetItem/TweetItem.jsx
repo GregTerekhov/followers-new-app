@@ -3,7 +3,6 @@ import logo from 'logo.svg';
 import pictureQuestion from 'picture-question.png';
 import {
   Avatar,
-  FollowingBtn,
   Line,
   LogoGoIt,
   PictureQuestion,
@@ -16,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { updateFollowers } from 'store/users/usersOperations';
 import { useUsers } from 'hooks/useUsers';
 import { follow, unfollow } from 'store/tweets/tweetSlice';
+import { FollowingBtn } from 'styles/Button.styled';
 
 const TweetItem = ({ id, user, tweets, followers, avatar }) => {
   const { followerIds } = useUsers();
