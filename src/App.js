@@ -1,10 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 
 const Layout = lazy(() => import('./components/Layout/Layout'));
 const Home = lazy(() => import('./pages/Home/Home'));
 const Tweets = lazy(() => import('./pages/Tweets/Tweets'));
-const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 function App() {
   return (
@@ -14,7 +13,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="tweets" element={<Tweets />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Suspense>
   );

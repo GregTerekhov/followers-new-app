@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { usersSlice } from './users/usersSlice';
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
 import {
   FLUSH,
   REHYDRATE,
@@ -8,8 +8,8 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-  persistReducer,
-  persistStore,
+  // persistReducer,
+  // persistStore,
 } from 'redux-persist';
 
 const middleware = getDefaultMiddleware =>
@@ -20,16 +20,17 @@ const middleware = getDefaultMiddleware =>
     },
   });
 
-const TweetsPersistConfig = {
-  key: 'users',
-  storage,
-};
+// const TweetsPersistConfig = {
+//   key: 'users',
+//   storage,
+// };
 
 export const store = configureStore({
   reducer: {
-    users: persistReducer(TweetsPersistConfig, usersSlice.reducer),
+    users: usersSlice.reducer,
+    // users: persistReducer(TweetsPersistConfig, usersSlice.reducer),
   },
   middleware,
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);

@@ -20,9 +20,17 @@ const TweetItem = ({ user, tweets, followers, avatar }) => {
   const dispatch = useDispatch();
 
   const handleFollowClick = () => {
+    const updatedFollowers = following ? followers + 1 : followers - 1;
+    dispatch(
+      updateFollowers({
+        id: user.id,
+        followers: updatedFollowers,
+      })
+    );
+
     setFollowing(!following);
-    dispatch(updateFollowers({ userId: user.id, increment: !following }));
   };
+
   return (
     <TweetWrap>
       <a href="https://www.goit.global">

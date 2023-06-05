@@ -13,10 +13,7 @@ export const selectFilteredUsers = state => {
   }
 
   if (filter === 'followings') {
-    console.log(filter);
-    return items.filter(item => item.followers > 0);
+    return items.filter(item => item.followers < 0);
   }
-  console.log(items);
-
   return items;
 };

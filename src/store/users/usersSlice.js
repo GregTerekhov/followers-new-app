@@ -17,20 +17,20 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    toggleFollow: (state, action) => {
-      const { userId } = action.payload;
-      const user = state.items.find(item => item.id === userId);
-      if (user) {
-        if (user.followers === 0) {
-          user.followers += 1;
-        } else {
-          user.followers -= 1;
-        }
-      }
-    },
-    setPage: (state, action) => {
-      state.page = action.payload;
-    },
+    // toggleFollow: (state, action) => {
+    //   const { userId } = action.payload;
+    //   const user = state.items.find(item => item.id === userId);
+    //   if (user) {
+    //     if (user.followers === 0) {
+    //       user.followers += 1;
+    //     } else {
+    //       user.followers -= 1;
+    //     }
+    //   }
+    // },
+    // setPage: (state, action) => {
+    //   state.page = action.payload;
+    // },
     incrementPage: state => {
       state.page += 1;
     },
@@ -44,29 +44,10 @@ export const usersSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(updateFollowers.fulfilled, (state, action) => {
-        // const { userId, increment } = action.payload;
-        // const user = state.items.find(item => item.id === userId);
-
-        // if (user) {
-        //   user.followers += increment ? 1 : -1;
-        // }
-
-        ///////////////////////////////
-        //   const updatedUser = action.payload;
-        //   const index = state.items.findIndex(item => item.id === updatedUser.id);
-
-        //   if (index !== -1) {
-        //     state.items[index] = updatedUser;
-        //   }
-        // })
-        const updatedUser = action.payload;
-        const updatedItems = state.items.map(item => {
-          if (item.id === updatedUser.id) {
-            return { ...item, followers: updatedUser.followers };
-          }
-          return item;
-        });
-        state.items = updatedItems;
+        const index = state.items.findIndex(
+          item => item.id === action.payload.id
+        );
+        state.items.splice(index, 1, action.payload);
       })
       .addMatcher(isAnyOf(...getActions('pending')), handlePending)
       .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled)

@@ -6,6 +6,7 @@ import {
   Container,
   FooterEl,
   Header,
+  NavItem,
   NavList,
   Navigation,
   NavigationLink,
@@ -22,16 +23,16 @@ const Layout = () => {
         <Container>
           <Navigation>
             <NavList>
-              <li>
+              <NavItem>
                 <NavigationLink to="/">Home</NavigationLink>
-              </li>
-              <li>
+              </NavItem>
+              <NavItem>
                 <NavigationLink to="/tweets">Tweets</NavigationLink>
-              </li>
+              </NavItem>
               {!isHomePage && (
-                <li>
+                <NavItem>
                   <Dropdown />
-                </li>
+                </NavItem>
               )}
             </NavList>
           </Navigation>
@@ -46,11 +47,13 @@ const Layout = () => {
           </Container>
         </Section>
       </main>
-      <FooterEl>
-        <Container>
-          <Footer />
-        </Container>
-      </FooterEl>
+      {!isHomePage && (
+        <FooterEl>
+          <Container>
+            <Footer />
+          </Container>
+        </FooterEl>
+      )}
     </>
   );
 };

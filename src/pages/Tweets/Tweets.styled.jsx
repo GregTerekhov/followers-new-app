@@ -6,7 +6,10 @@ export const TweetsWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
+
+  @media screen and (min-width: 768px) {
+    padding: 0 40px;
+  }
 `;
 
 export const GoBackBtn = styled(Link)`
@@ -31,6 +34,18 @@ export const GoBackBtn = styled(Link)`
   &:active {
     background-color: #5cd3a8;
   }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 56px;
+    font-size: 24px;
+    width: 220px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 80px;
+    font-size: 24px;
+    width: 276px;
+  }
 `;
 
 export const NoTweetsMessage = styled.p`
@@ -44,7 +59,22 @@ export const TweetsList = styled.ul`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 40px;
   margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 56px;
+  }
+
+  @media screen and (min-width: 960px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 80px;
+    gap: 30px;
+  }
 `;
 
 export const LoadMoreBtn = styled.button`
@@ -66,5 +96,15 @@ export const LoadMoreBtn = styled.button`
   &:hover,
   &:active {
     background-color: #5cd3a8;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    width: 220px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 24px;
+    width: 276px;
   }
 `;

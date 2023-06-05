@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const TweetWrap = styled.div`
+export const TweetWrap = styled.li`
   width: 380px;
   padding: 20px 0 36px;
   text-align: center;
@@ -13,8 +13,12 @@ export const TweetWrap = styled.div`
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
 
-  & + & {
-    margin-top: 40px;
+  @media screen and (min-width: 768px) {
+    width: 420px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: calc((100% - 60px) / 3);
   }
 `;
 
@@ -27,6 +31,10 @@ export const PictureQuestion = styled.img`
   position: relative;
   top: -14px;
   margin: auto;
+
+  @media screen and (min-width: 768px) {
+    top: 0;
+  }
 `;
 
 export const Avatar = styled.img`
@@ -37,6 +45,12 @@ export const Avatar = styled.img`
   margin: auto;
   outline: 8px solid #ebd8ff;
   border-radius: 50%;
+
+  @media screen and (min-width: 768px) {
+    width: 112px;
+    top: 0;
+    margin-bottom: 24px;
+  }
 `;
 
 export const Line = styled.span`
@@ -55,6 +69,11 @@ export const TweetInfoWrap = styled.div`
   flex-direction: column;
   gap: 16px;
   margin-bottom: 26px;
+
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+    margin-bottom: 40px;
+  }
 `;
 
 export const TweetInfo = styled.p`
@@ -63,6 +82,10 @@ export const TweetInfo = styled.p`
   font-size: 20px;
   color: #ebd8ff;
   text-transform: uppercase;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const FollowingBtn = styled.button`
@@ -84,5 +107,10 @@ export const FollowingBtn = styled.button`
   &:hover,
   &:active {
     background-color: #5cd3a8;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    width: 220px;
   }
 `;

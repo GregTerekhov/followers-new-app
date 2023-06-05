@@ -13,7 +13,7 @@ import {
 } from './Tweets.styled';
 
 const Tweets = () => {
-  const { loadMore, fetchUsers, users } = useUsers();
+  const { loadMore, fetchUsers } = useUsers();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
   const filteredUsers = useSelector(selectFilteredUsers);
@@ -21,9 +21,6 @@ const Tweets = () => {
 
   useEffect(() => {
     fetchUsers();
-    return () => {
-      fetchUsers([]);
-    };
   }, [fetchUsers]);
 
   return (
@@ -36,10 +33,10 @@ const Tweets = () => {
         </NoTweetsMessage>
       ) : (
         <TweetsList>
-          {users &&
-            users.map(({ user, tweets, followers, avatar }, index) => (
+          {filteredUsers &&
+            filteredUsers.map(({ id, user, tweets, followers, avatar }) => (
               <TweetItem
-                key={index}
+                key={id}
                 user={user}
                 tweets={tweets}
                 followers={followers}
