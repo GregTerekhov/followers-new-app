@@ -1,4 +1,9 @@
+import { useDispatch } from 'react-redux';
+import { updateFollowers } from 'store/users/usersOperations';
+import { follow, unfollow } from 'store/tweets/tweetSlice';
+import { useUsers } from 'hooks/useUsers';
 import PropTypes from 'prop-types';
+import formatNumber from 'services/formatNumber';
 import logo from 'logo.svg';
 import pictureQuestion from 'picture-question.png';
 import {
@@ -10,11 +15,6 @@ import {
   TweetInfoWrap,
   TweetWrap,
 } from './TweetItem.styled';
-import formatNumber from 'services/formatNumber';
-import { useDispatch } from 'react-redux';
-import { updateFollowers } from 'store/users/usersOperations';
-import { useUsers } from 'hooks/useUsers';
-import { follow, unfollow } from 'store/tweets/tweetSlice';
 import { FollowingBtn } from 'styles/Button.styled';
 
 const TweetItem = ({ id, user, tweets, followers, avatar }) => {
@@ -50,8 +50,8 @@ const TweetItem = ({ id, user, tweets, followers, avatar }) => {
       <Avatar src={avatar} alt={user} width="80px" />
       <Line></Line>
       <TweetInfoWrap>
-        <TweetInfo>Tweets: {formatNumber(tweets)}</TweetInfo>
-        <TweetInfo>Followers: {formatNumber(followers)}</TweetInfo>
+        <TweetInfo>{formatNumber(tweets)} Tweets</TweetInfo>
+        <TweetInfo>{formatNumber(followers)} Followers</TweetInfo>
       </TweetInfoWrap>
       <FollowingBtn
         type="submit"

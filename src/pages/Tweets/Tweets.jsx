@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useUsers } from 'hooks/useUsers';
-import TweetItem from 'components/TweetItem/TweetItem.jsx';
+import { TweetItem } from 'components';
 import { NoTweetsMessage, TweetsList, TweetsWrapper } from './Tweets.styled';
 import { GoBackBtn, LoadMoreBtn } from 'styles/Button.styled';
-import { Helmet } from 'react-helmet-async';
 
 const Tweets = () => {
   const { fetchUsers, users, clear, followerIds, filter } = useUsers();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
-  const showNoTweetsMessage = users.length === 0;
 
   const [page, setPage] = useState(1);
 
@@ -25,6 +24,9 @@ const Tweets = () => {
     }
   };
 
+  const filteredUsers = filterUsers();
+  const showNoTweetsMessage = filteredUsers.length === 0;
+
   useEffect(() => {
     return () => {
       clear();
@@ -34,8 +36,6 @@ const Tweets = () => {
   useEffect(() => {
     fetchUsers(page);
   }, [fetchUsers, clear, page]);
-
-  const filteredUsers = filterUsers();
 
   return (
     <>
@@ -66,7 +66,7 @@ const Tweets = () => {
               )}
           </TweetsList>
         )}
-        {!showNoTweetsMessage && (
+        {!showNoTweetsMessage && filteredUsers.length > 5 && (
           <LoadMoreBtn type="button" onClick={() => setPage(page => page + 1)}>
             Load more
           </LoadMoreBtn>

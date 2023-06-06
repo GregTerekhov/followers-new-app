@@ -1,5 +1,4 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { usersSlice } from './users/usersSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   FLUSH,
@@ -11,6 +10,7 @@ import {
   persistReducer,
   persistStore,
 } from 'redux-persist';
+import { usersSlice } from './users/usersSlice';
 import { tweetSlice } from './tweets/tweetSlice';
 
 const middleware = getDefaultMiddleware =>

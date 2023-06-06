@@ -1,7 +1,7 @@
-import homePicture from 'keyboard.jpg';
+import { Helmet } from 'react-helmet-async';
 import { HomePagePic, Title } from './Home.styled';
 import { HomeJoinBtn } from 'styles/Button.styled';
-import { Helmet } from 'react-helmet-async';
+import homePicture from 'keyboard.jpg';
 
 const Home = () => {
   return (

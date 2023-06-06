@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Dropdown from 'components/Dropdown/Dropdown';
-import Footer from 'components/Footer/Footer';
+import { Dropdown, Footer, Loader } from 'components';
 import {
   Container,
   NavItem,
@@ -11,7 +10,6 @@ import {
 } from './Layout.styled';
 import { NavigationLink } from 'styles/Button.styled';
 import { FooterEl, Header } from 'styles/HeadnFoot.styled';
-import Loader from 'components/Loader/Loader';
 
 const Layout = () => {
   const location = useLocation();
