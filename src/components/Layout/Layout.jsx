@@ -1,6 +1,5 @@
-import { Suspense } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { Dropdown, Footer, Loader } from 'components';
+import { Dropdown, Footer } from 'components';
 import {
   Container,
   NavItem,
@@ -39,23 +38,7 @@ const Layout = () => {
       <main>
         <Section>
           <Container>
-            <Suspense
-              fallback={
-                <Loader
-                  height="100"
-                  width="100"
-                  color="#5cd3a8'"
-                  wrapperStyle={{}}
-                  visible={true}
-                  outerCircleColor="#5cd3a8'"
-                  innerCircleColor="#5cd3a8'"
-                  barColor="#ebd8ff"
-                  ariaLabel="circles-with-bar-loading"
-                />
-              }
-            >
-              <Outlet />
-            </Suspense>
+            <Outlet />
           </Container>
         </Section>
       </main>
