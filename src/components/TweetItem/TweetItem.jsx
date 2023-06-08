@@ -5,21 +5,24 @@ import { useUsers } from 'hooks/useUsers';
 import PropTypes from 'prop-types';
 import formatNumber from 'services/formatNumber';
 import logo from 'logo.svg';
-import pictureQuestion from 'picture-question.png';
+import pictureQuestion from 'picturequestion.png';
 import {
   Avatar,
-  Line,
-  LogoGoIt,
   PictureQuestion,
+  LogoGoIt,
   TweetInfo,
   TweetInfoWrap,
   TweetWrap,
+  AvatarWrapper,
 } from './TweetItem.styled';
 import { FollowingBtn } from 'styles/Button.styled';
 
 const TweetItem = ({ id, user, tweets, followers, avatar }) => {
   const { followerIds } = useUsers();
   const dispatch = useDispatch();
+
+  const followedUser = id => followerIds.indexOf(id) !== -1;
+  const following = followedUser(id);
 
   const handleFollowClick = () => {
     const toggleFollowing = following ? followers - 1 : followers + 1;
@@ -34,9 +37,6 @@ const TweetItem = ({ id, user, tweets, followers, avatar }) => {
     }
   };
 
-  const followedUser = id => followerIds.indexOf(id) !== -1;
-  const following = followedUser(id);
-
   return (
     <TweetWrap>
       <a href="https://www.goit.global">
@@ -47,8 +47,9 @@ const TweetItem = ({ id, user, tweets, followers, avatar }) => {
         alt="picture with a question and an answer"
         width="308px"
       />
-      <Avatar src={avatar} alt={user} width="80px" />
-      <Line></Line>
+      <AvatarWrapper>
+        <Avatar src={avatar} alt={user} width="80px" />
+      </AvatarWrapper>
       <TweetInfoWrap>
         <TweetInfo>{formatNumber(tweets)} Tweets</TweetInfo>
         <TweetInfo>{formatNumber(followers)} Followers</TweetInfo>

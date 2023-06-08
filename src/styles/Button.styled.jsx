@@ -18,15 +18,6 @@ font-size: 18px;
   &:hover {
     background-color: #5cd3a8;
   }
-
-    @media screen and (min-width: 768px) {
-        font-size: 24px;
-        width: 220px;
-      }
-
-      @media screen and (min-width: 1200px) {
-        width: 276px;
-      }
 `;
 
 const sharedButtonLinkStyles = `
@@ -86,9 +77,7 @@ export const NavigationLink = styled(NavLink)`
   padding: 11px 0;
 
   @media screen and (min-width: 768px) {
-    width: 160px;
-  }
-  @media screen and (min-width: 960px) {
-    width: 220px;
+    font-size: 18px;
+    width: 196px;
   }
 `;

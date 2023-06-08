@@ -1,6 +1,11 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter, selectUsers } from 'store/users/usersSelectors';
+import {
+  selectFilter,
+  selectLoading,
+  selectTotalUsers,
+  selectUsers,
+} from 'store/users/usersSelectors';
 import { fetchTweets } from 'store/users/usersOperations';
 import { clearUsers, incrementPage, setFilter } from 'store/users/usersSlice';
 import {
@@ -11,8 +16,11 @@ import {
 export const useUsers = () => {
   const users = useSelector(selectUsers);
   const filter = useSelector(selectFilter);
+  const totalUsers = useSelector(selectTotalUsers);
+  const isLoading = useSelector(selectLoading);
   const isFollowing = useSelector(selectIsFollowing);
   const followerIds = useSelector(selectFollowersIds);
+
   const dispatch = useDispatch();
 
   const clear = useCallback(() => {
@@ -25,6 +33,10 @@ export const useUsers = () => {
     },
     [dispatch]
   );
+
+  // useEffect(() => {
+  //   dispatch(fetchCountTweets());
+  // }, [dispatch]);
 
   const loadMore = useCallback(() => {
     dispatch(incrementPage());
@@ -40,6 +52,8 @@ export const useUsers = () => {
   return {
     users,
     filter,
+    totalUsers,
+    isLoading,
     isFollowing,
     followerIds,
     clear,

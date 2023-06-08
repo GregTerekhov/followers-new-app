@@ -1,8 +1,13 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchTweets, updateFollowers } from './usersOperations';
+import {
+  // fetchCountTweets,
+  fetchTweets,
+  updateFollowers,
+} from './usersOperations';
 
 const initialState = {
   items: [],
+  totalUsers: null,
   page: 1,
   filter: 'showAll',
   error: null,
@@ -15,8 +20,8 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    incrementPage: () => {
-      return initialState;
+    incrementPage: state => {
+      state.page = 1;
     },
     clearUsers: () => {
       return initialState;
@@ -31,6 +36,9 @@ export const usersSlice = createSlice({
       .addCase(fetchTweets.fulfilled, (state, action) => {
         state.items = [...state.items, ...action.payload];
       })
+      // .addCase(fetchCountTweets.fulfilled, (state, action) => {
+      //   state.totalUsers = action.payload;
+      // })
       .addCase(updateFollowers.fulfilled, (state, action) => {
         const index = state.items.findIndex(
           item => item.id === action.payload.id

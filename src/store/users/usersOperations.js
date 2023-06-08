@@ -20,6 +20,19 @@ export const fetchTweets = createAsyncThunk(
   }
 );
 
+// export const fetchCountTweets = createAsyncThunk(
+//   'users/fetchCountTweets',
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const { data } = await axios.get('/users/count');
+//       console.log(data.count);
+//       return data.count;
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const updateFollowers = createAsyncThunk(
   'users/updateFollowers',
   async ({ id, ...body }, { rejectWithValue }) => {

@@ -7,7 +7,7 @@ export const TweetsWrapper = styled.div`
   justify-content: center;
 
   @media screen and (min-width: 768px) {
-    padding: 0 40px;
+    padding: 0 30px;
   }
 `;
 

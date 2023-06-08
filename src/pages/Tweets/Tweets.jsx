@@ -7,7 +7,8 @@ import { NoTweetsMessage, TweetsList, TweetsWrapper } from './Tweets.styled';
 import { GoBackBtn, LoadMoreBtn } from 'styles/Button.styled';
 
 const Tweets = () => {
-  const { fetchUsers, users, clear, followerIds, filter } = useUsers();
+  const { fetchUsers, users, clear, isLoading, filter, followerIds } =
+    useUsers();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
@@ -25,7 +26,7 @@ const Tweets = () => {
   };
 
   const filteredUsers = filterUsers();
-  const showNoTweetsMessage = filteredUsers.length === 0;
+  const showNoTweetsMessage = filteredUsers.length === 0 && !isLoading;
 
   useEffect(() => {
     return () => {
@@ -35,7 +36,7 @@ const Tweets = () => {
 
   useEffect(() => {
     fetchUsers(page);
-  }, [fetchUsers, clear, page]);
+  }, [fetchUsers, page]);
 
   return (
     <>
@@ -66,7 +67,7 @@ const Tweets = () => {
               )}
           </TweetsList>
         )}
-        {!showNoTweetsMessage && filteredUsers.length > 5 && (
+        {!showNoTweetsMessage && (
           <LoadMoreBtn type="button" onClick={() => setPage(page => page + 1)}>
             Load more
           </LoadMoreBtn>
