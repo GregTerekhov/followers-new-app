@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Layout, Loader } from 'components';
+import { Loader } from 'components';
+import Layout from 'layout/Layout';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Tweets = lazy(() => import('./pages/Tweets/Tweets'));
@@ -20,7 +21,7 @@ function App() {
             }
           />
         </Route>
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/404.html" />} />
       </Routes>
     </Suspense>
   );

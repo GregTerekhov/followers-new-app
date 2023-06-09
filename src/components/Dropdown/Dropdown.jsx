@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import { useUsers } from 'hooks/useUsers';
-import { dropdownStyles } from './Dropdown.styled';
+import { dropdownStyles } from './dropdown.styled';
 
 const options = [
   { value: 'showAll', label: 'Show All' },

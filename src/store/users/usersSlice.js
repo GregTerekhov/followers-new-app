@@ -21,7 +21,7 @@ export const usersSlice = createSlice({
   initialState,
   reducers: {
     incrementPage: state => {
-      state.page = 1;
+      return initialState;
     },
     clearUsers: () => {
       return initialState;

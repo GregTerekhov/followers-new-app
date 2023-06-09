@@ -34,10 +34,6 @@ export const useUsers = () => {
     [dispatch]
   );
 
-  // useEffect(() => {
-  //   dispatch(fetchCountTweets());
-  // }, [dispatch]);
-
   const loadMore = useCallback(() => {
     dispatch(incrementPage());
   }, [dispatch]);

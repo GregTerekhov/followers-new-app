@@ -1,5 +1,10 @@
+export { default as Avatar } from './Avatar/Avatar';
 export { default as Dropdown } from './Dropdown/Dropdown';
+export { default as FollowingButton } from './FollowingButton/FollowingButton';
 export { default as Footer } from './Footer/Footer';
-export { default as Layout } from './Layout/Layout';
 export { default as Loader } from './Loader/Loader';
+// export { default as LoadMoreButton } from './LoadMoreButton/LoadMoreButton';
+export { default as Navbar } from './Navbar/Navbar';
+export { default as SocialList } from './SocialList/SociaList';
 export { default as TweetItem } from './TweetItem/TweetItem';
+export { default as TweetsList } from './TweetsList/TweetsList';

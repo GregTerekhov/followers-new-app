@@ -1,5 +1,5 @@
 import { CirclesWithBar } from 'react-loader-spinner';
-import { LoaderContainer } from './Loader.styled';
+import { LoaderContainer } from './loader.styled';
 
 const Loader = () => {
   return (

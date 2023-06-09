@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useUsers } from 'hooks/useUsers';
-import { TweetItem } from 'components';
-import { NoTweetsMessage, TweetsList, TweetsWrapper } from './Tweets.styled';
-import { GoBackBtn, LoadMoreBtn } from 'styles/Button.styled';
+import { TweetsList } from 'components';
+import { NoTweetsMessage, TweetsWrapper } from './tweets.styled';
+import { GoBackBtn, LoadMoreBtn } from 'styles/button.styled';
 
 const Tweets = () => {
-  const { fetchUsers, users, clear, isLoading, filter, followerIds } =
-    useUsers();
+  const { fetchUsers, users, clear, filter, followerIds } = useUsers();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
@@ -26,7 +25,7 @@ const Tweets = () => {
   };
 
   const filteredUsers = filterUsers();
-  const showNoTweetsMessage = filteredUsers.length === 0 && !isLoading;
+  const showNoTweetsMessage = filteredUsers.length === 0;
 
   useEffect(() => {
     return () => {
@@ -51,21 +50,7 @@ const Tweets = () => {
             <br /> Try again
           </NoTweetsMessage>
         ) : (
-          <TweetsList>
-            {filteredUsers &&
-              filteredUsers.map(
-                ({ id, user, tweets, followers, avatar }, index) => (
-                  <TweetItem
-                    key={index}
-                    id={id}
-                    user={user}
-                    tweets={tweets}
-                    followers={followers}
-                    avatar={avatar}
-                  />
-                )
-              )}
-          </TweetsList>
+          <TweetsList filteredUsers={filteredUsers} />
         )}
         {!showNoTweetsMessage && (
           <LoadMoreBtn type="button" onClick={() => setPage(page => page + 1)}>
