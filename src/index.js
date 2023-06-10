@@ -7,7 +7,6 @@ import { HelmetProvider } from 'react-helmet-async';
 import reportWebVitals from './reportWebVitals';
 import { persistor, store } from 'store/store';
 import App from './App';
-import 'styles/global.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

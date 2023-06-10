@@ -1,17 +1,25 @@
 export const dropdownStyles = {
   control: (baseStyles, state) => ({
     ...baseStyles,
-    width: 128,
+    width: 112,
     textAlign: 'center',
     textTransform: 'uppercase',
     fontSize: 14,
     borderRadius: 10,
-    backgroundColor: '#ebd8ff',
-    borderColor: state.isFocused ? '#5cd3a8' : '#ebd8ff',
+    backgroundColor: 'var(--following-btn-color-inactive)',
+    borderColor: state.isFocused
+      ? 'var(--following-btn-color-active)'
+      : 'var(--following-btn-color-inactive)',
   }),
+  '@media (min-width: 768px)': {
+    control: baseStyles => ({
+      ...baseStyles,
+      width: 220,
+    }),
+  },
   container: baseStyles => ({
     ...baseStyles,
-    color: '#373737',
+    color: 'var(--primary-color)',
     borderRadius: 10,
     boxShadow: '0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);',
   }),
@@ -22,9 +30,11 @@ export const dropdownStyles = {
   }),
   option: (baseStyles, state) => ({
     ...baseStyles,
-    color: '#373737',
+    color: 'var(--primary-color)',
     textTransform: 'uppercase',
     fontSize: 14,
-    backgroundColor: state.isSelected ? '#5cd3a8' : '',
+    backgroundColor: state.isSelected
+      ? 'var(--following-btn-color-active)'
+      : '',
   }),
 };

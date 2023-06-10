@@ -37,9 +37,8 @@ export const TweetInfoWrap = styled.div`
 `;
 
 export const TweetInfo = styled.p`
-  font-family: 'Montserrat';
   font-weight: 500;
   font-size: 20px;
-  color: #ebd8ff;
+  color: var(--following-btn-color-inactive);
   text-transform: uppercase;
 `;

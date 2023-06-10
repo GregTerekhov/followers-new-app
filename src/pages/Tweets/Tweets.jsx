@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useUsers } from 'hooks/useUsers';
 import { TweetsList } from 'components';
-import { NoTweetsMessage, TweetsWrapper } from './tweets.styled';
+import { BackLinkIcon, NoTweetsMessage, TweetsWrapper } from './tweets.styled';
 import { GoBackBtn, LoadMoreBtn } from 'styles/button.styled';
+import { LoadingMoreIcon } from 'components/LoadMoreButton/loadMoreButton.styled';
 
 const Tweets = () => {
   const { fetchUsers, users, clear, filter, followerIds } = useUsers();
@@ -43,7 +44,10 @@ const Tweets = () => {
         <title>Your tweetbook</title>
       </Helmet>
       <TweetsWrapper>
-        <GoBackBtn to={backLinkLocationRef.current}>Go back</GoBackBtn>
+        <GoBackBtn to={backLinkLocationRef.current}>
+          <BackLinkIcon />
+          Go back
+        </GoBackBtn>
         {showNoTweetsMessage ? (
           <NoTweetsMessage>
             Sorry, no tweets for your request.
@@ -55,6 +59,7 @@ const Tweets = () => {
         {!showNoTweetsMessage && (
           <LoadMoreBtn type="button" onClick={() => setPage(page => page + 1)}>
             Load more
+            <LoadingMoreIcon />
           </LoadMoreBtn>
         )}
       </TweetsWrapper>

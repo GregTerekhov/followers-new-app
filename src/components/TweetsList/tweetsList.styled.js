@@ -17,7 +17,7 @@ export const ListWrapper = styled.ul`
     flex-wrap: wrap;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     margin-bottom: 80px;
     gap: 30px;
   }

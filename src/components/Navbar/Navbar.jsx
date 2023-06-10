@@ -1,20 +1,26 @@
 import { useLocation } from 'react-router-dom';
 import { Dropdown } from 'components';
 import { NavigationLink } from 'styles/button.styled';
-import { NavItem, NavList, Navigation } from './navbar.styled';
+import { HomeIcon, NavItem, NavList, TweetIcon } from './navbar.styled';
 
 const Navbar = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   return (
-    <Navigation>
+    <nav>
       <NavList>
         <NavItem>
-          <NavigationLink to="/">Home</NavigationLink>
+          <NavigationLink to="/">
+            <HomeIcon />
+            Home
+          </NavigationLink>
         </NavItem>
         <NavItem>
-          <NavigationLink to="/tweets">Tweets</NavigationLink>
+          <NavigationLink to="/tweets">
+            <TweetIcon />
+            Tweets
+          </NavigationLink>
         </NavItem>
         {!isHomePage && (
           <NavItem>
@@ -22,7 +28,7 @@ const Navbar = () => {
           </NavItem>
         )}
       </NavList>
-    </Navigation>
+    </nav>
   );
 };
 

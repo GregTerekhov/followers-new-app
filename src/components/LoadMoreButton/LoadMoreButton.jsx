@@ -1,6 +1,7 @@
 import { useUsers } from 'hooks/useUsers';
 import { useEffect, useState } from 'react';
 import { LoadMoreBtn } from 'styles/button.styled';
+import { LoadingMoreIcon } from './loadMoreButton.styled';
 
 const LoadMoreButton = () => {
   const { fetchUsers } = useUsers();
@@ -13,6 +14,7 @@ const LoadMoreButton = () => {
   return (
     <LoadMoreBtn type="button" onClick={() => setPage(page => page + 1)}>
       Load more
+      <LoadingMoreIcon />
     </LoadMoreBtn>
   );
 };

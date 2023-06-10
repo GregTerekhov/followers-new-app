@@ -12,14 +12,13 @@ export const HomePagePic = styled.img`
     margin-bottom: 56px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     margin-bottom: 96px;
     width: 1080px;
   }
 `;
 
 export const Title = styled.h1`
-  font-family: 'Montserrat';
   font-size: 32px;
   margin-bottom: 32px;
 
@@ -27,7 +26,7 @@ export const Title = styled.h1`
     font-size: 64px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     font-size: 96px;
     margin-bottom: 96px;
   }

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
 export const FooterEl = styled.footer`
-  width: 100%;
-  min-height: 80px;
+  padding-top: 32px;
+  padding-bottom: 16px;
   background: linear-gradient(
     114.99deg,
     #471ca9 -0.99%,
@@ -15,7 +15,7 @@ export const FooterEl = styled.footer`
     min-height: 112px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     min-height: 144px;
   }
 `;
@@ -25,11 +25,14 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  padding: 16px 0;
+  gap: 48px;
 `;
 
 export const TextCopy = styled.p`
-  color: #ebd8ff;
-  font-size: 16px;
+  color: var(--following-btn-color-inactive);
+  font-size: 12px;
+
+  @media screen and (min-width: 960px) {
+    font-size: 16px;
+  }
 `;

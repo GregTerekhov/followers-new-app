@@ -1,14 +1,16 @@
 import styled from '@emotion/styled';
+import { MdArrowBackIos } from 'react-icons/md';
 
 export const TweetsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
 
-  @media screen and (min-width: 768px) {
-    padding: 0 30px;
-  }
+export const BackLinkIcon = styled(MdArrowBackIos)`
+  width: 24px;
+  height: 24px;
 `;
 
 export const NoTweetsMessage = styled.p`
